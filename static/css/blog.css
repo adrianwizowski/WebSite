@@ -42,10 +42,11 @@
   z-index: 50px;
 }
 
+
 div.stars {
-  width: 240px;
-  display: inline-block;
-}
+    width: 240px;
+    display: inline-block;
+    }
 
 input.star { display: none; }
 

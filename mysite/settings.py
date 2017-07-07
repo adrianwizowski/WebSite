@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cms',
     'menus',
     'treebeard',
+    'django_user_agents',
 ]
 SITE_ID = 1
 
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware',
+    'content.myMiddleware.myMiddleware.CustomUserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
