@@ -83,7 +83,7 @@ label.star:before {
     background-size: cover;
     height: 54vh;
     max-height: 1200px;
-    min-height: 600px;
+    min-height: auto;
 }
 
 .bgnd-1 {
@@ -101,4 +101,9 @@ label.star:before {
 p {
     margin-left: 15px;
     margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.text {
+    max-height: auto;
 }

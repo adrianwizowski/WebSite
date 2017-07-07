@@ -16,7 +16,7 @@
     <body>
 
         <div>
-                <section class="bgnd bgnd-1 js-parallax-bg" style="background-position: 50% 0px;">
+                <section class="bgnd bgnd-1 js-parallax-bg">
                     <script> Gator(window).on('scroll', doParallax);
                     var images = [].slice.call(document.querySelectorAll('.js-parallax-bg'));
 
@@ -67,7 +67,7 @@
                 </section>
                 {% for p in posts %}
                         {% if  p.id == 1 %}
-                            <div class="text" style="min-height: 600px;">
+                            <div class="text">
                               <h1 style="color: black; text-align: center">{{ p.title }}</h1>
                               <p style="color: black; text-align: center">{{ p.text }}</p>
                             </div>
@@ -114,7 +114,7 @@
                 </section>
                 {% for p in posts %}
                         {% if p.id == 2 %}
-                            <div class="text" style="min-height: 600px;">
+                            <div class="text">
                               <h1 style="color: black; text-align: center">{{ p.title }}</h1>
                               <p style="color: black; text-align: center">{{ p.text }}</p>
                             </div>
@@ -160,7 +160,7 @@
                 </section>
                 {% for p in posts %}
                         {% if  p.id == 3 %}
-                            <div class="text" style="min-height: 600px;">
+                            <div class="text">
                               <h1 style="color: black; text-align: center">{{ p.title }}</h1>
                               <p style="color: black; text-align: center">{{ p.text }}</p>
                             </div>
