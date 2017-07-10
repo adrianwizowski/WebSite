@@ -8,165 +8,52 @@
         <link rel="stylesheet" href="{% static '/css/blog.css' %}">
         <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static '/css/bootstrap-theme.css' %}">
-        <script src="{% static '/css/jquery.js' %}"></script>
         <script src="{% static '/css/bootstrap.js' %}"></script>
-        <script src="{% static '/js/gator.js' %}"></script>
         <style type="text/css">
         </style>
     </head>
     <body>
-
         <div>
-                <section class="bgnd bgnd-1 js-parallax-bg">
-                    <script> Gator(window).on('scroll', doParallax);
-                    var images = [].slice.call(document.querySelectorAll('.js-parallax-bg'));
-
-                    function getViewportHeight() {
-                        var a = document.documentElement.clientHeight, b = window.innerHeight;
-                        return a < b ? b : a;
-                    }
-
-                    function getViewportScroll() {
-                        if(typeof window.scrollY != 'undefined') {
-                            return window.scrollY;
-                        }
-                        if(typeof pageYOffset != 'undefined') {
-                            return pageYOffset;
-                        }
-                        var doc = document.documentElement;
-                        doc = doc.clientHeight ? doc : document.body;
-                        return doc.scrollTop;
-                    }
-
-                    function doParallax() {
-                        var el, elOffset, elHeight,
-                            offset = getViewportScroll(),
-                            vHeight = getViewportHeight();
-
-                        for(var i in images) {
-                            el = images[i];
-                            elOffset = el.offsetTop;
-                            elHeight = el.offsetHeight;
-
-                            if((elOffset > offset + vHeight) || (elOffset + elHeight < offset)) { continue; }
-
-                            el.style.backgroundPosition = '50% '-Math.round((offset - elOffset)*7/8)+'px';
-                        }
-                    }
-
-                    </script>
-                    <div class="page-header">
-                        <div align="center">
-                             <div class="btn-group">
-                                  <form>
-                                      <input class="button" type="button" value="PL" onclick="window.location.href={% url 'base_pl' %}" />
-                                      <input class="button" type="button" value="EN" onclick="window.location.href={% url 'base' %}" />
-                                  </form>
-                             </div>
-                        </div>
+            <section class="bgnd bgnd-1 js-parallax-bg">
+                <div class="page-header">
+                    <div align="center">
+                         <div class="btn-group">
+                              <form>
+                                  <input class="button" type="button" value="PL" onclick="window.location.href={% url 'base_pl' %}" />
+                                  <input class="button" type="button" value="EN" onclick="window.location.href={% url 'base' %}" />
+                              </form>
+                         </div>
                     </div>
-                </section>
-                {% for p in posts %}
-                        {% if  p.id == 4 %}
-                            <div class="text">
-                              <h1 style="color: black; text-align: center">{{ p.title }}</h1>
-                              <p style="color: black; text-align: center">{{ p.text }}</p>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                <section class="bgnd bgnd-2 js-parallax-bg">
-                    <script> Gator(window).on('scroll', doParallax);
-                    var images = [].slice.call(document.querySelectorAll('.js-parallax-bg'));
-
-                    function getViewportHeight() {
-                        var a = document.documentElement.clientHeight, b = window.innerHeight;
-                        return a < b ? b : a;
-                    }
-
-                    function getViewportScroll() {
-                        if(typeof window.scrollY != 'undefined') {
-                            return window.scrollY;
-                        }
-                        if(typeof pageYOffset != 'undefined') {
-                            return pageYOffset;
-                        }
-                        var doc = document.documentElement;
-                        doc = doc.clientHeight ? doc : document.body;
-                        return doc.scrollTop;
-                    }
-
-                    function doParallax() {
-                        var el, elOffset, elHeight,
-                            offset = getViewportScroll(),
-                            vHeight = getViewportHeight();
-
-                        for(var i in images) {
-                            el = images[i];
-                            elOffset = el.offsetTop;
-                            elHeight = el.offsetHeight;
-
-                            if((elOffset > offset + vHeight) || (elOffset + elHeight < offset)) { continue; }
-
-                            el.style.backgroundPosition = '50% '-Math.round((offset - elOffset)*7/8)+'px';
-                        }
-                    }
-
-                    </script>
-                </section>
-                {% for p in posts %}
-                        {% if p.id == 5 %}
-                            <div class="text">
-                              <h1 style="color: black; text-align: center">{{ p.title }}</h1>
-                              <p style="color: black; text-align: center">{{ p.text }}</p>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                <section class="bgnd bgnd-3 js-parallax-bg">
-                    <script> Gator(window).on('scroll', doParallax);
-                    var images = [].slice.call(document.querySelectorAll('.js-parallax-bg'));
-
-                    function getViewportHeight() {
-                        var a = document.documentElement.clientHeight, b = window.innerHeight;
-                        return a < b ? b : a;
-                    }
-
-                    function getViewportScroll() {
-                        if(typeof window.scrollY != 'undefined') {
-                            return window.scrollY;
-                        }
-                        if(typeof pageYOffset != 'undefined') {
-                            return pageYOffset;
-                        }
-                        var doc = document.documentElement;
-                        doc = doc.clientHeight ? doc : document.body;
-                        return doc.scrollTop;
-                    }
-
-                    function doParallax() {
-                        var el, elOffset, elHeight,
-                            offset = getViewportScroll(),
-                            vHeight = getViewportHeight();
-
-                        for(var i in images) {
-                            el = images[i];
-                            elOffset = el.offsetTop;
-                            elHeight = el.offsetHeight;
-
-                            if((elOffset > offset + vHeight) || (elOffset + elHeight < offset)) { continue; }
-
-                            el.style.backgroundPosition = '50% '-Math.round((offset - elOffset)*7/8)+'px';
-                        }
-                    }
-                    </script>
-                </section>
-                {% for p in posts %}
-                        {% if  p.id == 6 %}
-                            <div class="text">
-                              <h1 style="color: black; text-align: center">{{ p.title }}</h1>
-                              <p style="color: black; text-align: center">{{ p.text }}</p>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                </div>
+            </section>
+            {% for p in posts %}
+                    {% if  p.id == 4 %}
+                        <div class="text">
+                          <h1 style="color: black; text-align: center">{{ p.title }}</h1>
+                          <p style="color: black; text-align: center">{{ p.text }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            <section class="bgnd bgnd-2 js-parallax-bg">
+            </section>
+            {% for p in posts %}
+                    {% if p.id == 5 %}
+                        <div class="text">
+                          <h1 style="color: black; text-align: center">{{ p.title }}</h1>
+                          <p style="color: black; text-align: center">{{ p.text }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            <section class="bgnd bgnd-3 js-parallax-bg">
+            </section>
+            {% for p in posts %}
+                    {% if  p.id == 6 %}
+                        <div class="text">
+                          <h1 style="color: black; text-align: center">{{ p.title }}</h1>
+                          <p style="color: black; text-align: center">{{ p.text }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
         </div>
         {% if request.user_agent.is_pc %}
             <div class="container-floating">

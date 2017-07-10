@@ -7,26 +7,24 @@
 
 .button {
     color: white;
-    background-color: transparent; /* Green background */
-    border: none; /* White text */
-    padding: 30px 70px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
+    background-color: transparent;
+    border: none;
+    padding: 30px 70px;
+    cursor: pointer;
+    float: left;
     transition: all .5s ease-in-out;
 }
 
 .button:not(:last-child) {
-    border-right: none; /* Prevent double borders */
+    border-right: none;
 }
 
-/* Clear floats (clearfix hack) */
 .btn-group:after {
     content: "";
     clear: both;
     display: table;
 }
 
-/* Add a background color on hover */
 .button:hover {
     color: black;
     background-color: white;

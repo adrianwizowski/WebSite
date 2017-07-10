@@ -1,5 +1,24 @@
+// parallaxing background
+// including gator script file
+
+function include(file)
+{
+
+  var script  = document.createElement('script');
+  script.src  = file;
+  script.type = 'text/javascript';
+  script.defer = true;
+
+  document.getElementsByTagName('head').item(0).appendChild(script);
+
+}
+
+/* include any js files here */
+include('js/gator.js');
+
+
 Gator(window).on('scroll', doParallax);
-var images = [].slice.call(document.querySelectorAll('.layer'));
+var images = [].slice.call(document.querySelectorAll('.js-parallax-bg'));
 
 function getViewportHeight() {
     var a = document.documentElement.clientHeight, b = window.innerHeight;
@@ -30,6 +49,6 @@ function doParallax() {
 
         if((elOffset > offset + vHeight) || (elOffset + elHeight < offset)) { continue; }
 
-        el.style.backgroundPosition = '50% '+'data-depth'+'px';
+        el.style.backgroundPosition = '50% '-Math.round((offset - elOffset)*7/8)+'px';
     }
 }
