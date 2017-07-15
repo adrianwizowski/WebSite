@@ -32,6 +32,7 @@
 }
 
 .container-floating{
+  background-color: red;
   position: fixed;
   width: auto;
   height: auto;

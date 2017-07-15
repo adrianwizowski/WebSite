@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static '/css/blog.css' %}">
+        <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static '/css/bootstrap-theme.css' %}">
+        <script src="{% static '/css/bootstrap.js' %}"></script>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <div>
+            <form method="POST" class="Donation">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="submit" onclick="window.location.href={% url 'paypal' %}">Save</button>
+            </form>
+        </div>
+    </body>

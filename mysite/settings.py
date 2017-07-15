@@ -44,8 +44,14 @@ INSTALLED_APPS = [
     'menus',
     'treebeard',
     'django_user_agents',
+    # paypal app
+    'paypal.standard.ipn',
+    'money',
 ]
+
 SITE_ID = 1
+PAYPAL_TEST = True
+PAYPAL_RECIEVER_EMAIL = 'VISA90@GMAIL.COM'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
