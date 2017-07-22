@@ -46,12 +46,11 @@ INSTALLED_APPS = [
     'django_user_agents',
     # paypal app
     'paypal.standard.ipn',
-    'money',
 ]
 
 SITE_ID = 1
 PAYPAL_TEST = True
-PAYPAL_RECIEVER_EMAIL = 'VISA90@GMAIL.COM'
+PAYPAL_RECIEVER_EMAIL = 'adrian.wizowski-facilitator@gmail.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

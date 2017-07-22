@@ -1,7 +1,7 @@
 from django.utils import timezone
-from .models import Post
+from .models import Post, Donation
 from .forms import DonationForm
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from paypal.standard.forms import PayPalPaymentsForm
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -36,12 +36,10 @@ def paypal(request):
 
     paypal_dict = {
         "business": settings.PAYPAL_RECIEVER_EMAIL,
-        "amount": "1.00",
         "item_name": "Donation",
-        "currency_code": "EUR",
         "notify_url": 'http://{}{}'.format(host, reverse('paypal-ipn')),
-        "return_url": 'http://{}{}'.format(host, reverse('base:done')),
-        "cancel_return": 'http://{}{}'.format(host, reverse('base:canceled')),
+        "return_url": 'http://{}{}'.format(host, reverse('done')),
+        "cancel_return": 'http://{}{}'.format(host, reverse('canceled')),
     }
 
     # Create the instance.
@@ -50,5 +48,8 @@ def paypal(request):
     return render(request, 'base/process.html', context)
 
 def donation(request):
-    form = DonationForm()
-    return render(request, 'base/donation.html', {'form': form})
+    form = DonationForm(request.POST or None)
+    if form.is_valid():
+        form.save(commit=True)
+        return redirect('/process')
+    return render(request, 'base/donation.html',{'form': form})

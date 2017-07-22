@@ -13,19 +13,20 @@
         </style>
     </head>
     <body>
-        <div>
-            <section class="bgnd bgnd-1 js-parallax-bg">
-                <div class="page-header">
-                    <div align="center">
-                         <div class="btn-group">
-                              <form>
-                                  <input class="button" type="button" value="PL" onclick="window.location.href={% url 'base_pl' %}" />
-                                  <input class="button" type="button" value="EN" onclick="window.location.href={% url 'base' %}" />
-                              </form>
-                         </div>
-                    </div>
+    <div>
+        <section class="bgnd bgnd-1 js-parallax-bg">
+            <div class="page-header">
+                <div align="center">
+                     <div class="btn-group">
+                          <form>
+                              <input class="button" type="button" value="PL" onclick="window.location.href={% url 'base_pl' %}" />
+                              <input class="button" type="button" value="EN" onclick="window.location.href={% url 'base' %}" />
+                          </form>
+                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+        <div>
             {% for p in posts %}
                     {% if  p.id == 1 %}
                         <div class="text">
@@ -62,6 +63,7 @@
                 </form>
             </div>
         {% endif %}
+    </div>
     </body>
 </html>
 

@@ -107,3 +107,22 @@ p {
 .text {
     max-height: auto;
 }
+
+.donation {
+    margin: auto;
+    display: table;
+}
+
+.donation-button{
+    color: black;
+    background-color: transparent;
+    border: none;
+    padding: 30px 70px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    display: table;
+}
+
+.donation-button:hover {
+    transform: scale(1.1);
+    }

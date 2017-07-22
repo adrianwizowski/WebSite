@@ -13,11 +13,27 @@
         </style>
     </head>
     <body>
-        <div>
-            <form method="POST" class="Donation">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="submit" onclick="window.location.href={% url 'paypal' %}">Save</button>
-            </form>
+    <div>
+        <section class="bgnd bgnd-1 js-parallax-bg">
+                <div class="page-header">
+                    <div align="center">
+                         <div class="btn-group">
+                              <form>
+                                  <input class="button" type="button" value="PL" onclick="window.location.href={% url 'base_pl' %}" />
+                                  <input class="button" type="button" value="EN" onclick="window.location.href={% url 'base' %}" />
+                              </form>
+                         </div>
+                    </div>
+                </div>
+            </section>
+            <div class="donation">
+                <form method="POST" class="Donation">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="submit">Save</button>
+                </form>
+            </div>
+            <section class="bgnd bgnd-2 js-parallax-bg">
+            </section>
         </div>
     </body>

@@ -18,9 +18,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Donation(models.Model):
     name = models.CharField(max_length=50)
-    donation = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return self.donation
+        return self.name

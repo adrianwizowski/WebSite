@@ -14,4 +14,4 @@ class DonationForm(forms.ModelForm):
 
     class Meta:
         model = Donation
-        fields = ('name', 'donation')
+        fields = ('name',)
