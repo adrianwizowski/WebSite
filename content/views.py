@@ -1,7 +1,7 @@
 from django.utils import timezone
-from .models import Post, Donation
+from .models import Post
 from .forms import DonationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from paypal.standard.forms import PayPalPaymentsForm
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -47,9 +47,14 @@ def paypal(request):
     context = {"form": form}
     return render(request, 'base/process.html', context)
 
+
 def donation(request):
     form = DonationForm(request.POST or None)
     if form.is_valid():
         form.save(commit=True)
         return redirect('/process')
-    return render(request, 'base/donation.html',{'form': form})
+    return render(request, 'base/donation.html', {'form': form})
+
+
+def feedback(request):
+    return render(request, 'base/feedback.html')

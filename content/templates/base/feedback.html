@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static '/css/blog.css' %}">
+        <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static '/css/bootstrap-theme.css' %}">
+        <script src="{% static '/css/bootstrap.js' %}"></script>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.10&appId=339164836512913";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div>
+        <section class="bgnd bgnd-1 js-parallax-bg">
+                <div class="page-header">
+                    <div align="center">
+                         <div class="btn-group">
+                              <form>
+                                  <input class="button" type="button" value="PL" onclick="window.location.href={% url 'base_pl' %}" />
+                                  <input class="button" type="button" value="EN" onclick="window.location.href={% url 'base' %}" />
+                              </form>
+                         </div>
+                    </div>
+                </div>
+            </section>
+        <div align="center">
+            <div class="fb-comments" data-href="{{request.build_absolute_uri }}" data-numposts="5"></div>
+            <section class="bgnd bgnd-2 js-parallax-bg">
+            </section>
+        </div>
+    </div>
+    </body>

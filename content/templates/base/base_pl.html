@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load socialaccount %}
+{% providers_media_js %}
 <html>
     <head>
         <title>test</title>
@@ -60,6 +62,7 @@
             <div class="container-floating">
                 <form>
                     <input class="button" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}" />
+                    <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="button" >Facebook Feedback</a>
                 </form>
             </div>
         {% endif %}

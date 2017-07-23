@@ -34,12 +34,16 @@ INSTALLED_APPS = [
     'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'content',
-    'django.contrib.sites',
     'cms',
     'menus',
     'treebeard',
@@ -66,6 +70,13 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware',
     'content.myMiddleware.myMiddleware.CustomUserAgentMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -158,3 +169,5 @@ STATICFILES_FINDERS = (
 )
 
 MEDIA_URL = '/static_media/'
+
+LOGIN_REDIRECT_URL = '/feedback/'
