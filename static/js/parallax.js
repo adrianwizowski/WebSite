@@ -13,7 +13,6 @@ function include(file)
 
 }
 
-/* include any js files here */
 include('js/gator.js');
 
 

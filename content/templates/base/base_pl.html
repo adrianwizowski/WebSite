@@ -6,11 +6,34 @@
     <head>
         <title>test</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static '/css/blog.css' %}">
         <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
-        <link rel="stylesheet" href="{% static '/css/bootstrap-theme.css' %}">
-        <script src="{% static '/css/bootstrap.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script type="text/javascript">
+        jQuery(function () {
+            var $els = $('div[id^=change]'),
+                i = 0,
+                len = $els.length;
+
+            $els.slice(1).hide();
+
+            function slider() {
+                $els.eq(i).fadeOut(function () {
+                    i = (i + 1) % len
+                    $els.eq(i).fadeIn();
+                })
+            }
+
+            var timer = setInterval(slider, 2500);
+
+            $('div[id^=change]').hover(function (ev) {
+                clearInterval(timer);
+            }, function (ev) {
+                timer = setInterval(slider, 2500);
+            });
+         });
+        </script>
         <style type="text/css">
         </style>
     </head>
@@ -61,8 +84,12 @@
         {% if request.user_agent.is_pc %}
             <div class="container-floating">
                 <form>
-                    <input class="button" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}" />
-                    <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="button" >Facebook Feedback</a>
+                    <div id="change1">
+                        <input class="button" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}" />
+                    </div>
+                    <div id="change2">
+                        <a href="{% provider_login_url "facebook" %}" class="button" >Facebook Feedback</a>
+                    </div>
                 </form>
             </div>
         {% endif %}
