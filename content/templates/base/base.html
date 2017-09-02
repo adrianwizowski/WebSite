@@ -10,32 +10,8 @@
         <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-        <script type="text/javascript">
-        jQuery(function () {
-            var $els = $('div[id^=change]'),
-                i = 0,
-                len = $els.length;
-
-            $els.slice(1).hide();
-
-            function slider() {
-                $els.eq(i).fadeOut(function () {
-                    i = (i + 1) % len
-                    $els.eq(i).fadeIn();
-                })
-            }
-
-            var timer = setInterval(slider, 2500);
-
-            $('div[id^=change]').hover(function (ev) {
-                clearInterval(timer);
-            }, function (ev) {
-                timer = setInterval(slider, 2500);
-            });
-         });
-        </script>
-        <style type="text/css">
-        </style>
+        <script src="{% static '/js/change_div.js' %}"></script>
+        <script src="{% static '/js/parallax.js' %}"></script>
     </head>
     <body>
     <div>
@@ -53,9 +29,10 @@
         </section>
             {% for p in posts %}
                     {% if  p.id == 1 %}
-                        <div class="text">
-                          <h1 style="color: black; text-align: center">{{ p.title }}</h1>
-                          <p style="color: black; text-align: center">{{ p.text }}</p>
+                        <div class="text" style="display: flow-root;">
+                            <p style="float: right;"><img src="{% static '/images/self_s.jpg' %}"></p>
+                            <h1 style="color: black; text-align: center">{{ p.title }}</h1>
+                            <p style="color: black; text-align: center">{{ p.text|linebreaks }}</p>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -74,19 +51,29 @@
             {% for p in posts %}
                     {% if  p.id == 3 %}
                         <div class="text">
-                          <h1 style="color: black; text-align: center">{{ p.title }}</h1>
-                          <p style="color: black; text-align: center">{{ p.text }}</p>
+                            <div class="btn-bottom-group" id="bottom">
+                                <form>
+                                    <input class="btn-bottom" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}"/>
+                                    <a href="{% provider_login_url "facebook" %}" class="btn-bottom" >Facebook</a>
+                                    <input class="btn-bottom" type="button" value="GitHub" onclick="window.open('https://github.com/adrianwizowski/WebSite', '_blank')" />
+                                </form>
+                             </div>
+                            <h1 style="color: black; text-align: center">{{ p.title }}</h1>
+                            <p style="color: black; text-align: center">{{ p.text|linebreaks }}</p>
                         </div>
                     {% endif %}
                 {% endfor %}
         {% if request.user_agent.is_pc %}
-            <div class="container-floating">
+            <div class="container-floating" id="hide">
                 <form>
                     <div id="change1">
                         <input class="button" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}" />
                     </div>
                     <div id="change2">
-                        <a href="{% provider_login_url "facebook" %}" class="button" >Facebook Feedback</a>
+                        <a href="{% provider_login_url "facebook" %}" class="button" >Facebook</a>
+                    </div>
+                    <div id="change3">
+                        <input class="button" type="button" value="GitHub" onclick="window.open('https://github.com/adrianwizowski/WebSite', '_blank')" />
                     </div>
                 </form>
             </div>

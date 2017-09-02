@@ -6,7 +6,7 @@
 
 
 .button {
-    color: white;
+    color: black;
     background-color: transparent;
     border: none;
     padding: 30px 70px;
@@ -19,17 +19,41 @@
     border-right: none;
 }
 
+.button:hover {
+    color: black;
+    background-color: white;
+    transform: scale(1.1);
+}
+
 .btn-group:after {
     content: "";
     clear: both;
     display: table;
 }
 
-.button:hover {
+.btn-bottom-group{
+    float: right;
+    margin-top: 1em;
+}
+
+.btn-bottom {
+    width: 10em;
+    color: black;
+    background-color: white;
+    border: black;
+    padding: 30px 70px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    display: block;
+    border: 2px solid black;
+}
+
+.btn-bottom:hover {
     color: black;
     background-color: white;
     transform: scale(1.1);
 }
+
 
 .container-floating{
   background-color: red;
@@ -106,6 +130,9 @@ p {
 
 .text {
     max-height: auto;
+    margin-left: 2.125em;
+    margin-right: 2.125em;
+    margin-bottom: 1em;
 }
 
 .donation {

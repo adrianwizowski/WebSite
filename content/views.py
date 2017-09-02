@@ -1,11 +1,12 @@
 from django.utils import timezone
 from .models import Post
 from .forms import DonationForm
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from paypal.standard.forms import PayPalPaymentsForm
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+
 
 
 # rendering english version
