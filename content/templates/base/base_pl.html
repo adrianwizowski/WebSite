@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load socialaccount %}
 {% providers_media_js %}
+{% csrf_token %}
 <html>
     <head>
         <title>test</title>
@@ -9,7 +10,7 @@
         <link rel="stylesheet" href="{% static '/css/blog.css' %}">
         <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
         <script src="{% static '/js/change_div.js' %}"></script>
         <script src="{% static '/js/parallax.js' %}"></script>
     </head>
@@ -56,6 +57,7 @@
                                     <input class="btn-bottom" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}"/>
                                     <a href="{% provider_login_url "facebook" %}" class="btn-bottom" >Facebook</a>
                                     <input class="btn-bottom" type="button" value="GitHub" onclick="window.open('https://github.com/adrianwizowski/WebSite', '_blank')" />
+                                    <input class="btn-bottom" type="button" value="CodeWars" onclick="window.open('https://www.codewars.com/users/adrianwizowski', '_blank')" />
                                 </form>
                              </div>
                             <h1 style="color: black; text-align: center">{{ p.title }}</h1>
@@ -74,6 +76,9 @@
                     </div>
                     <div id="change3">
                         <input class="button" type="button" value="GitHub" onclick="window.open('https://github.com/adrianwizowski/WebSite', '_blank')" />
+                    </div>
+                    <div id="change">
+                        <input class="button" type="button" value="CodeWars" onclick="window.open('https://www.codewars.com/users/adrianwizowski', '_blank')" />
                     </div>
                 </form>
             </div>

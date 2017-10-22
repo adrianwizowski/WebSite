@@ -112,6 +112,7 @@ label.star:before {
 
 .bgnd-1 {
     background-image: url(../images/1.jpg);
+    background-size: contain;
 }
 
 .bgnd-2 {
