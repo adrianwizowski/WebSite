@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static '/css/blog.css' %}">
         <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
         <script src="{% static '/js/change_div.js' %}"></script>
@@ -34,6 +35,69 @@
                             <p style="float: right;"><img src="{% static '/images/self_s.jpg' %}"></p>
                             <h1 style="color: black; text-align: center">{{ p.title }}</h1>
                             <p style="color: black; text-align: center">{{ p.text|linebreaks }}</p>
+                            <p>My soft skills are way better than hard ones. ;)</p>
+                            <table class="skills" >
+                                <tr>
+                                    <th>
+                                    English:</th>
+                                    <th>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </th>
+                                    <th style="padding:0 0 0 1em">
+                                        Python:</th>
+                                    <th>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                    Django:</th>
+                                    <th>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </th>
+                                    <th style="padding:0 0 0 1em">
+                                    HTML:</th>
+                                    <th>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                    CSS:</th>
+                                    <th>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </th>
+                                    <th style="padding:0 0 0 1em">
+                                    SQL:</th>
+                                    <th>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </th>
+                                </tr>
+                            </table>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -77,7 +141,7 @@
                     <div id="change3">
                         <input class="button" type="button" value="GitHub" onclick="window.open('https://github.com/adrianwizowski/WebSite', '_blank')" />
                     </div>
-                    <div id="change">
+                    <div id="change4">
                         <input class="button" type="button" value="CodeWars" onclick="window.open('https://www.codewars.com/users/adrianwizowski', '_blank')" />
                     </div>
                 </form>
