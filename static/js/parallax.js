@@ -1,23 +1,4 @@
 // parallaxing background
-// including gator script file
-
-function include(file)
-{
-
-  var script  = document.createElement('script');
-  script.src  = file;
-  script.type = 'text/javascript';
-  script.defer = true;
-
-  document.getElementsByTagName('head').item(0).appendChild(script);
-
-}
-
-include('js/gator.js');
-
-
-Gator(window).on('scroll', doParallax);
-var images = [].slice.call(document.querySelectorAll('.js-parallax-bg'));
 
 function getViewportHeight() {
     var a = document.documentElement.clientHeight, b = window.innerHeight;
