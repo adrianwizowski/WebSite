@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load tag_extras %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality</title>
+    <link rel="stylesheet" href="{% static '/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
+    <style>
+    html, body {
+    height: 100%;
+    }
+
+    html {
+    display: table;
+    margin: auto;
+    }
+
+    body {
+    display: table;
+    vertical-align: middle;
+    font-family: Verdana;
+    }
+    .foo {
+    text-align: center;
+    max-width: 500px;
+    height: 100px;
+    margin: 0px;
+    }
+    .blue {
+    background: #00ccff;
+    }
+
+    .green {
+    background: #00cc00;
+    }
+
+    .lightgreen {
+    background: #66ff1a;
+    }
+
+    .yellow {
+    background: #ffff99;
+    }
+    .orange {
+    background: #ffd633;
+    }
+    .red {
+    background: #cc0000;
+    }
+    footer {
+    text-align: center;
+    font-size: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="Wroclaw Korzeniowskiego">
+    {% for i in result_korzeniowskiego %}
+        {% for key, value in i.items %}
+            {% if key == 'index' %}
+                <div class="foo blue">Wrocław Korzeniowskiego
+                    Aktualizacja:
+                    {{value}}</div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% for i in result_korzeniowskiego %}
+        {% for key, value in i.items %}
+            {% if key == 'PM2,5' %}
+                <div class="{{ value|pm2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'PM10' %}
+                <div class="{{ value|pm10 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'NO2' %}
+                <div class="{{ value|no2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'CO' %}
+                <div class="{{ value|co }}">{{key}} - {{value}} mg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'SO2' %}
+                <div class="{{ value|so2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'O3' %}
+                <div class="{{ value|o3 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'C6H6' %}
+                <div class="{{ value|c6h6 }}">Benzen - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+    {% endfor %}
+    {% endfor %}
+    <div class="Wroclaw Powstancow">
+    {% for i in result_powstancow %}
+        {% for key, value in i.items %}
+            {% if key == 'index' %}
+                <div class="foo blue">Wrocław Powstańców
+                    Aktualizacja:
+                    {{value}}</div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% for i in result_powstancow %}
+        {% for key, value in i.items %}
+            {% if key == 'PM 2.5' %}
+                <div class="{{ value|pm2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'NO2' %}
+                <div class="{{ value|no2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
+            {% endif %}
+            {% if key == 'CO' %}
+                <div class="{{ value|co }}">{{key}} - {{value}} mg/m<sup>3</sup></div>
+            {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>
+</div>
+ <footer>
+  <p>Wszystkie dane pochodzą z: <a href="http://powietrze.gios.gov.pl/pjp/home" target="_blank">
+  http://powietrze.gios.gov.pl/</a></p>
+</footer>
+</body>
+</html>

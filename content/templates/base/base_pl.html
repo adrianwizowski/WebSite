@@ -32,7 +32,9 @@
             {% for p in posts %}
                     {% if  p.id == 4 %}
                         <div class="text" style="display: flow-root;">
-                            <p style="float: right;"><img src="{% static '/images/self_s.jpg' %}"></p>
+                            {% if request.user_agent.is_pc %}
+                                <p style="float: right;"><img src="{% static '/images/self_s.jpg' %}"></p>
+                            {% endif %}
                             <h1 style="color: black; text-align: center">{{ p.title }}</h1>
                             <p style="color: black; text-align: center">{{ p.text|linebreaks }}</p>
                             <table class="skills" >

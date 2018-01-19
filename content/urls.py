@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^process/', views.paypal, name='process'),
     url(r'^done/', views.money_done, name='done'),
     url(r'^canceled/', views.money_canceled, name='canceled'),
+    url(r'^air/', views.air, name='air')
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
