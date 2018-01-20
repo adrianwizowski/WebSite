@@ -3,106 +3,141 @@ from django import template
 register = template.Library()
 
 @register.filter
-def no2(value):
+def no2(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 40:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Dwutlenek azotu"}
+        return dictonary[parametr]
     elif value < 100:
-        return "foo lightgreen"
+        dictionary = {"color": "#00ff00", "quality": "Dobra", "disc": "Dwutlenek azotu"}
+        return dictionary[parametr]
     elif value < 150:
-        return "foo yellow"
+        dictionary = {"color": "#ffff99", "quality": "Umiarkowana", "disc": "Dwutlenek azotu"}
+        return dictionary[parametr]
     elif value < 200:
-        return "foo orange"
+        dictionary = {"color": "#ffd633", "quality": "Dostateczna", "disc": "Dwutlenek azotu"}
+        return dictionary[parametr]
     else:
-        return "foo red"
+        dictionary = {"color": "#cc0000", "quality": "Zła", "disc": "Dwutlenek azotu"}
+        return dictionary[parametr]
 
 @register.filter
-def pm2(value):
+def pm2(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 12:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Pył zawieszony 2.5µm"}
+        return dictonary[parametr]
     elif value < 36:
-        return "foo lightgreen"
+        dictionary = {"color": "#00ff00", "quality": "Dobra", "disc": "Pył zawieszony 2.5µm"}
+        return dictionary[parametr]
     elif value < 60:
-        return "foo yellow"
+        dictionary = {"color": "#ffff99", "quality": "Umiarkowana", "disc": "Pył zawieszony 2.5µm"}
+        return dictionary[parametr]
     elif value < 84:
-        return "foo orange"
+        dictionary = {"color": "#ffd633", "quality": "Dostateczna", "disc": "Pył zawieszony 2.5µm"}
+        return dictionary[parametr]
     else:
-        return "foo red"
+        dictionary = {"color": "#cc0000", "quality": "Zła", "disc": "Pył zawieszony 2.5µm"}
+        return dictionary[parametr]
 
 @register.filter
-def pm10(value):
+def pm10(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 20:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Pył zawieszony 10µm"}
+        return dictonary[parametr]
     elif value < 60:
-        return "foo lightgreen"
+        dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Pył zawieszony 10µm"}
+        return dictonary[parametr]
     elif value < 100:
-        return "foo yellow"
+        dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Pył zawieszony 10µm"}
+        return dictonary[parametr]
     elif value < 140:
-        return "foo orange"
+        dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Pył zawieszony 10µm"}
+        return dictonary[parametr]
     else:
-        return "foo red"
+        dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Pył zawieszony 10µm"}
+        return dictonary[parametr]
 
 @register.filter
-def co(value):
+def co(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 2:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Tlenek węgla"}
+        return dictonary[parametr]
     elif value < 6:
-        return "foo lightgreen"
+        dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Tlenek węgla"}
+        return dictonary[parametr]
     elif value < 10:
-        return "foo yellow"
+        dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Tlenek węgla"}
+        return dictonary[parametr]
     elif value < 14:
-        return "foo orange"
+        dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Tlenek węgla"}
+        return dictonary[parametr]
     else:
-        return "foo red"
+        dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Tlenek węgla"}
+        return dictonary[parametr]
 
 @register.filter
-def so2(value):
+def so2(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 50:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Dwutlenek siarki"}
+        return dictonary[parametr]
     elif value < 100:
-        return "foo lightgreen"
+        dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Dwutlenek siarki"}
+        return dictonary[parametr]
     elif value < 350:
-        return "foo yellow"
+        dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Dwutlenek siarki"}
+        return dictonary[parametr]
     elif value < 500:
-        return "foo orange"
+        dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Dwutlenek siarki"}
+        return dictonary[parametr]
     else:
-        return "foo red"
+        dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Dwutlenek siarki"}
+        return dictonary[parametr]
 
 @register.filter
-def o3(value):
+def o3(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 70:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Ozon"}
+        return dictonary[parametr]
     elif value < 120:
-        return "foo lightgreen"
+        dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Ozon"}
+        return dictonary[parametr]
     elif value < 150:
-        return "foo yellow"
+        dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Ozon"}
+        return dictonary[parametr]
     elif value < 180:
-        return "foo orange"
+        dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Ozon"}
+        return dictonary[parametr]
     else:
-        return "foo red"
+        dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Ozon"}
+        return dictonary[parametr]
 
 @register.filter
-def c6h6(value):
+def c6h6(value, parametr):
     value = value.replace(',','.')
     value = float(value)
     if value < 5:
-        return "foo green"
+        dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Benzen"}
+        return dictonary[parametr]
     elif value < 10:
-        return "foo lightgreen"
+        dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Benzen"}
+        return dictonary[parametr]
     elif value < 15:
-        return "foo yellow"
+        dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Benzen"}
+        return dictonary[parametr]
     elif value < 20:
-        return "foo orange"
+        dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Benzen"}
+        return dictonary[parametr]
     else:
-        return "foo red"
+        dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Benzen"}
+        return dictonary[parametr]

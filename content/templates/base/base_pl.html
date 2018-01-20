@@ -121,6 +121,7 @@
                             <div class="btn-bottom-group" id="bottom">
                                 <form>
                                     <input class="btn-bottom" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}"/>
+                                    <input class="btn-bottom" type="button" value="Air" onclick="window.location.href={% url 'air' %}"/>
                                     <a href="{% provider_login_url "facebook" %}" class="btn-bottom" >Facebook</a>
                                     <input class="btn-bottom" type="button" value="GitHub" onclick="window.open('https://github.com/adrianwizowski/WebSite', '_blank')" />
                                     <input class="btn-bottom" type="button" value="CodeWars" onclick="window.open('https://www.codewars.com/users/adrianwizowski', '_blank')" />
@@ -135,7 +136,7 @@
             <div class="container-floating" id="hide">
                 <form>
                     <div id="change1">
-                        <input class="button" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}" />
+                        <input class="button" type="button" value="Air" onclick="window.location.href={% url 'air' %}" />
                     </div>
                     <div id="change2">
                         <a href="{% provider_login_url "facebook" %}" class="button" >Facebook</a>
@@ -145,6 +146,9 @@
                     </div>
                     <div id="change4">
                         <input class="button" type="button" value="CodeWars" onclick="window.open('https://www.codewars.com/users/adrianwizowski', '_blank')" />
+                    </div>
+                    <div id="change5">
+                        <input class="button" type="button" value="PayPal" onclick="window.location.href={% url 'donation' %}" />
                     </div>
                 </form>
             </div>

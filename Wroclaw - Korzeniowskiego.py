@@ -98,7 +98,7 @@ def Wroc_Pow():
 
     for k in result.keys():
         if len(result[k]) > 2:
-            result[k][0] = {'PM 2.5' : str(result[k][0])}
+            result[k][0] = {'PM2,5' : str(result[k][0])}
             result[k][1] = {'NO2' : str(result[k][1])}
             result[k][2] = {'CO' : str(result[k][2])}
         else:

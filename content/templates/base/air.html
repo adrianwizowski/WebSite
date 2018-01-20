@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Quality</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css"
+      integrity="sha384-R80DC0KVBO4GSTw+wZ5x2zn2pu4POSErBkf8/fSFhPXHxvHJydT0CSgAP2Yo2r4I" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static '/css/blog.css' %}">
     <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
@@ -24,102 +27,96 @@
     vertical-align: middle;
     font-family: Verdana;
     }
-    .foo {
-    text-align: center;
-    max-width: 500px;
-    height: 100px;
-    margin: 0px;
+    .card {
+    font-size: 1.5rem;
+    font-weight: 600;
     }
-    .blue {
-    background: #00ccff;
-    }
-
-    .green {
-    background: #00cc00;
-    }
-
-    .lightgreen {
-    background: #66ff1a;
-    }
-
-    .yellow {
-    background: #ffff99;
-    }
-    .orange {
-    background: #ffd633;
-    }
-    .red {
-    background: #cc0000;
-    }
-    footer {
-    text-align: center;
-    font-size: 10px;
+    p {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding: 15px;
     }
 </style>
 </head>
 <body>
-    <div class="Wroclaw Korzeniowskiego">
-    {% for i in result_korzeniowskiego %}
-        {% for key, value in i.items %}
-            {% if key == 'index' %}
-                <div class="foo blue">Wrocław Korzeniowskiego
-                    Aktualizacja:
-                    {{value}}</div>
-            {% endif %}
+<div class="Wroclaw Korzeniowskiego">
+    <div class="card text-center">
+        <div class="card-header">
+            Wrocław Korzeniowskiego
+        </div>
+        <div class="card-body">
+        {% for i in result_korzeniowskiego %}
+            {% for key, value in i.items %}
+                    {% if key == 'PM2,5' %}
+                        <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'PM10' %}
+                        <p class="card-text" style="background-color:{{ value|pm10:'color' }};">{{ value|pm10:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm10:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'NO2' %}
+                        <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'CO' %}
+                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} mg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'SO2' %}
+                        <p class="card-text" style="background-color:{{ value|so2:'color' }};">{{ value|so2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|so2:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'O3' %}
+                        <p class="card-text" style="background-color:{{ value|o3:'color' }};">{{ value|o3:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|o3:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'C6H6' %}
+                        <p class="card-text" style="background-color:{{ value|c6h6:'color' }};">{{ value|c6h6:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|c6h6:'quality' }} </p>
+                    {% endif %}
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-    {% for i in result_korzeniowskiego %}
-        {% for key, value in i.items %}
-            {% if key == 'PM2,5' %}
-                <div class="{{ value|pm2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'PM10' %}
-                <div class="{{ value|pm10 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'NO2' %}
-                <div class="{{ value|no2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'CO' %}
-                <div class="{{ value|co }}">{{key}} - {{value}} mg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'SO2' %}
-                <div class="{{ value|so2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'O3' %}
-                <div class="{{ value|o3 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'C6H6' %}
-                <div class="{{ value|c6h6 }}">Benzen - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-    {% endfor %}
-    {% endfor %}
-    <div class="Wroclaw Powstancow">
-    {% for i in result_powstancow %}
-        {% for key, value in i.items %}
-            {% if key == 'index' %}
-                <div class="foo blue">Wrocław Powstańców
-                    Aktualizacja:
-                    {{value}}</div>
-            {% endif %}
+        </div>
+        {% for i in result_korzeniowskiego %}
+            {% for key, value in i.items %}
+                    {% if key == 'index' %}
+                    <div class="card-footer text-muted">
+                        Aktualizacja: {{value}}
+                    </div>
+                    {% endif %}
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-    {% for i in result_powstancow %}
-        {% for key, value in i.items %}
-            {% if key == 'PM 2.5' %}
-                <div class="{{ value|pm2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'NO2' %}
-                <div class="{{ value|no2 }}">{{key}} - {{value}} µg/m<sup>3</sup></div>
-            {% endif %}
-            {% if key == 'CO' %}
-                <div class="{{ value|co }}">{{key}} - {{value}} mg/m<sup>3</sup></div>
-            {% endif %}
-    {% endfor %}
-    {% endfor %}
+    </div>
 </div>
+<div class="Wroclaw Powstancow" style="margin-top: 20px;">
+    <div class="card text-center">
+                <div class="card-header">
+                    Wrocław Powstańców Śląskich
+                </div>
+        <div class="card-body">
+        {% for i in result_powstancow %}
+            {% for key, value in i.items %}
+                    {% if key == 'PM2,5' %}
+                        <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'NO2' %}
+                        <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
+                    {% endif %}
+                    {% if key == 'CO' %}
+                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} mg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+                    {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </div>
+        {% for i in result_powstancow %}
+            {% for key, value in i.items %}
+                    {% if key == 'index' %}
+                    <div class="card-footer text-muted">
+                        Aktualizacja: {{value}}
+                    </div>
+                    {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
 </div>
  <footer>
-  <p>Wszystkie dane pochodzą z: <a href="http://powietrze.gios.gov.pl/pjp/home" target="_blank">
+  <p style="text-align: center; font-size: 10px;">Wszystkie dane pochodzą z: <a href="http://powietrze.gios.gov.pl/pjp/home" target="_blank">
   http://powietrze.gios.gov.pl/</a></p>
 </footer>
 </body>
