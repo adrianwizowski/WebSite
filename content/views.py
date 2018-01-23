@@ -62,21 +62,16 @@ def feedback(request):
     return render(request, 'base/feedback.html')
 
 from django.db import connection
-import datetime
 
 def air(request):
-    now = datetime.datetime.now()
-    i = 2
     with connection.cursor() as cursor:
-        sql_query_korzeniowskiego = 'SELECT * FROM "Wrocław Korzeniowskiego" WHERE "index" = "%02d.%02d.%d, %02d:00";' % (
-        now.day, now.month, now.year, now.hour - i,)
+        sql_query_korzeniowskiego = 'SELECT * FROM Cities JOIN Data_air ON Cities.ID = Data_air.ID and Cities.ID = 8128;'
         cursor.execute(sql_query_korzeniowskiego)
         columns_korzeniowskiego = [col[0] for col in cursor.description]
         result_korzeniowskiego = [dict(zip(columns_korzeniowskiego, row)) for row in cursor.fetchall()]
 
     with connection.cursor() as cursor:
-        sql_query_powstancow = 'SELECT * FROM "Wrocław Powstańców Śląskich" WHERE "index" = "%02d.%02d.%d, %02d:00";' % (
-            now.day, now.month, now.year, now.hour - i,)
+        sql_query_powstancow = 'SELECT * FROM Cities JOIN Data_air ON Cities.ID = Data_air.ID and Cities.ID = 8129;'
         cursor.execute(sql_query_powstancow)
         columns_powstancow = [col[0] for col in cursor.description]
         result_powstancow = [dict(zip(columns_powstancow, row)) for row in cursor.fetchall()]

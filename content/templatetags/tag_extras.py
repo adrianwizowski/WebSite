@@ -1,11 +1,10 @@
 from django import template
+import datetime
 
 register = template.Library()
 
 @register.filter
 def no2(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
     if value < 40:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Dwutlenek azotu"}
         return dictonary[parametr]
@@ -24,8 +23,6 @@ def no2(value, parametr):
 
 @register.filter
 def pm2(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
     if value < 12:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Pył zawieszony 2.5µm"}
         return dictonary[parametr]
@@ -44,8 +41,6 @@ def pm2(value, parametr):
 
 @register.filter
 def pm10(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
     if value < 20:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Pył zawieszony 10µm"}
         return dictonary[parametr]
@@ -64,18 +59,16 @@ def pm10(value, parametr):
 
 @register.filter
 def co(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
-    if value < 2:
+    if value < 2000:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Tlenek węgla"}
         return dictonary[parametr]
-    elif value < 6:
+    elif value < 6000:
         dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Tlenek węgla"}
         return dictonary[parametr]
-    elif value < 10:
+    elif value < 10000:
         dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Tlenek węgla"}
         return dictonary[parametr]
-    elif value < 14:
+    elif value < 14000:
         dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Tlenek węgla"}
         return dictonary[parametr]
     else:
@@ -84,8 +77,6 @@ def co(value, parametr):
 
 @register.filter
 def so2(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
     if value < 50:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Dwutlenek siarki"}
         return dictonary[parametr]
@@ -104,8 +95,6 @@ def so2(value, parametr):
 
 @register.filter
 def o3(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
     if value < 70:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Ozon"}
         return dictonary[parametr]
@@ -124,8 +113,6 @@ def o3(value, parametr):
 
 @register.filter
 def c6h6(value, parametr):
-    value = value.replace(',','.')
-    value = float(value)
     if value < 5:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Benzen"}
         return dictonary[parametr]
@@ -141,3 +128,12 @@ def c6h6(value, parametr):
     else:
         dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Benzen"}
         return dictonary[parametr]
+
+@register.filter
+def timenow(time):
+    now = datetime.datetime.now()
+
+    if int(time[11:13]) + 12 < now.hour:
+        time = time[:11] + str(int(time[11:13]) + 12) + time[13:]
+
+    return time

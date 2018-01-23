@@ -49,17 +49,17 @@
         <div class="card-body">
         {% for i in result_korzeniowskiego %}
             {% for key, value in i.items %}
-                    {% if key == 'PM2,5' %}
+                    {% if key == 'PM 2.5' %}
                         <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
                     {% endif %}
-                    {% if key == 'PM10' %}
+                    {% if key == 'PM 10' %}
                         <p class="card-text" style="background-color:{{ value|pm10:'color' }};">{{ value|pm10:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm10:'quality' }} </p>
                     {% endif %}
                     {% if key == 'NO2' %}
                         <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
                     {% endif %}
                     {% if key == 'CO' %}
-                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} mg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
                     {% endif %}
                     {% if key == 'SO2' %}
                         <p class="card-text" style="background-color:{{ value|so2:'color' }};">{{ value|so2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|so2:'quality' }} </p>
@@ -75,7 +75,7 @@
         </div>
         {% for i in result_korzeniowskiego %}
             {% for key, value in i.items %}
-                    {% if key == 'index' %}
+                    {% if key == 'Date' %}
                     <div class="card-footer text-muted">
                         Aktualizacja: {{value}}
                     </div>
@@ -92,21 +92,21 @@
         <div class="card-body">
         {% for i in result_powstancow %}
             {% for key, value in i.items %}
-                    {% if key == 'PM2,5' %}
+                    {% if key == 'PM 2.5' %}
                         <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
                     {% endif %}
                     {% if key == 'NO2' %}
                         <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
                     {% endif %}
                     {% if key == 'CO' %}
-                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} mg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
                     {% endif %}
             {% endfor %}
         {% endfor %}
         </div>
         {% for i in result_powstancow %}
             {% for key, value in i.items %}
-                    {% if key == 'index' %}
+                    {% if key == 'Date' %}
                     <div class="card-footer text-muted">
                         Aktualizacja: {{value}}
                     </div>
@@ -116,7 +116,7 @@
     </div>
 </div>
  <footer>
-  <p style="text-align: center; font-size: 10px;">Wszystkie dane pochodzą z: <a href="http://powietrze.gios.gov.pl/pjp/home" target="_blank">
+  <p style="text-align: center; font-size: 10px;">Wszystkie dane pochodzą z: <a href="http://aqicn.org" target="_blank">
   http://powietrze.gios.gov.pl/</a></p>
 </footer>
 </body>
