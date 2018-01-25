@@ -130,10 +130,5 @@ def c6h6(value, parametr):
         return dictonary[parametr]
 
 @register.filter
-def timenow(time):
-    now = datetime.datetime.now()
-
-    if int(time[11:13]) + 12 < now.hour:
-        time = time[:11] + str(int(time[11:13]) + 12) + time[13:]
-
-    return time
+def time(time):
+    return str(time)

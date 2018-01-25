@@ -47,40 +47,33 @@
             Wrocław Korzeniowskiego
         </div>
         <div class="card-body">
-        {% for i in result_korzeniowskiego %}
-            {% for key, value in i.items %}
-                    {% if key == 'PM 2.5' %}
-                        <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'PM 10' %}
-                        <p class="card-text" style="background-color:{{ value|pm10:'color' }};">{{ value|pm10:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm10:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'NO2' %}
-                        <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'CO' %}
-                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'SO2' %}
-                        <p class="card-text" style="background-color:{{ value|so2:'color' }};">{{ value|so2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|so2:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'O3' %}
-                        <p class="card-text" style="background-color:{{ value|o3:'color' }};">{{ value|o3:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|o3:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'C6H6' %}
-                        <p class="card-text" style="background-color:{{ value|c6h6:'color' }};">{{ value|c6h6:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|c6h6:'quality' }} </p>
-                    {% endif %}
-            {% endfor %}
+        {% for key, value in result_korzeniowskiego.items %}
+            {% if key == 'pm25' %}
+                <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
+            {% endif %}
+            {% if key == 'pm10' %}
+                <p class="card-text" style="background-color:{{ value|pm10:'color' }};">{{ value|pm10:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|pm10:'quality' }} </p>
+            {% endif %}
+            {% if key == 'no2' %}
+                <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
+            {% endif %}
+            {% if key == 'co' %}
+                <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+            {% endif %}
+            {% if key == 'so2' %}
+                <p class="card-text" style="background-color:{{ value|so2:'color' }};">{{ value|so2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|so2:'quality' }} </p>
+            {% endif %}
+            {% if key == 'o3' %}
+                <p class="card-text" style="background-color:{{ value|o3:'color' }};">{{ value|o3:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|o3:'quality' }} </p>
+            {% endif %}
         {% endfor %}
         </div>
-        {% for i in result_korzeniowskiego %}
-            {% for key, value in i.items %}
-                    {% if key == 'Date' %}
-                    <div class="card-footer text-muted">
-                        Aktualizacja: {{value}}
-                    </div>
-                    {% endif %}
-            {% endfor %}
+        {% for key, value in result_korzeniowskiego.items %}
+            {% if key == 'update' %}
+            <div class="card-footer text-muted">
+                Aktualizacja: {{value|time}}
+            </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
@@ -90,28 +83,24 @@
                     Wrocław Powstańców Śląskich
                 </div>
         <div class="card-body">
-        {% for i in result_powstancow %}
-            {% for key, value in i.items %}
-                    {% if key == 'PM 2.5' %}
-                        <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'NO2' %}
-                        <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
-                    {% endif %}
-                    {% if key == 'CO' %}
-                        <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} {{key}} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
-                    {% endif %}
-            {% endfor %}
+        {% for key, value in result_powstancow.items %}
+            {% if key == 'pm25' %}
+                <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
+            {% endif %}
+            {% if key == 'no2' %}
+                <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
+            {% endif %}
+            {% if key == 'co' %}
+                <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+            {% endif %}
         {% endfor %}
         </div>
-        {% for i in result_powstancow %}
-            {% for key, value in i.items %}
-                    {% if key == 'Date' %}
-                    <div class="card-footer text-muted">
-                        Aktualizacja: {{value}}
-                    </div>
-                    {% endif %}
-            {% endfor %}
+        {% for key, value in result_powstancow.items %}
+            {% if key == 'update' %}
+            <div class="card-footer text-muted">
+                Aktualizacja: {{value|time}}
+            </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>

@@ -65,16 +65,20 @@ from django.db import connection
 
 def air(request):
     with connection.cursor() as cursor:
-        sql_query_korzeniowskiego = 'SELECT * FROM Cities JOIN Data_air ON Cities.ID = Data_air.ID and Cities.ID = 8128;'
+        sql_query_korzeniowskiego = "SELECT * FROM stacja s JOIN pomiar p ON p.stacja=s.id WHERE s.id = 8128"
         cursor.execute(sql_query_korzeniowskiego)
-        columns_korzeniowskiego = [col[0] for col in cursor.description]
-        result_korzeniowskiego = [dict(zip(columns_korzeniowskiego, row)) for row in cursor.fetchall()]
+        response = cursor.fetchall()
+        result_korzeniowskiego = {'name': response[0][1], 'update': response[0][2]}
+        for row in range(len(response)):
+            result_korzeniowskiego[response[row][3]] = response[row][-1]
 
     with connection.cursor() as cursor:
-        sql_query_powstancow = 'SELECT * FROM Cities JOIN Data_air ON Cities.ID = Data_air.ID and Cities.ID = 8129;'
+        sql_query_powstancow = "SELECT * FROM stacja s JOIN pomiar p ON p.stacja=s.id WHERE s.id = 8129"
         cursor.execute(sql_query_powstancow)
-        columns_powstancow = [col[0] for col in cursor.description]
-        result_powstancow = [dict(zip(columns_powstancow, row)) for row in cursor.fetchall()]
+        response = cursor.fetchall()
+        result_powstancow = {'name': response[0][1], 'update': response[0][2]}
+        for row in range(len(response)):
+            result_powstancow[response[row][3]] = response[row][-1]
 
         return render(request, 'base/air.html',context={'result_korzeniowskiego':result_korzeniowskiego, 'result_powstancow': result_powstancow})
 

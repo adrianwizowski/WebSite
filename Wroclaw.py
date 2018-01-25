@@ -1,68 +1,32 @@
+from datetime import datetime
 import requests
 import sqlite3
 
-def wroc_pow():
-    conn = sqlite3.connect('db.sqlite3')
-    c = conn.cursor()
-
-    token = '1b444a2e8a925655a3b536eace22552dbf44058e'
-    response = requests.get('http://api.waqi.info/feed/@8129/?token=' + token)
-    data = response.json()
-    result = {'ID': data['data']['idx'], 'name': data['data']['city']['name'],
-              'data': {'Date': data['data']['time']['s'], 'PM 2.5': data['data']['iaqi']['pm25']['v'],
-                       'NO2': data['data']['iaqi']['no2']['v'], 'CO': data['data']['iaqi']['co']['v']}}
-
-    for i in result['data'].keys():
-        sql = "UPDATE Data_air SET '{}' = ? WHERE ID = ?".format(i)
-        c.execute(sql, (result['data'][i], result['ID'],))
-
-    conn.commit()
-    conn.close()
-
-
-def wroc_korz():
-    conn = sqlite3.connect('db.sqlite3')
-    c = conn.cursor()
-
-    token = '1b444a2e8a925655a3b536eace22552dbf44058e'
-    response = requests.get('http://api.waqi.info/feed/@8128/?token=' + token)
-    data = response.json()
-    result = {'ID': data['data']['idx'], 'name': data['data']['city']['name'],
-              'data': {'Date': data['data']['time']['s'], 'PM 2.5': data['data']['iaqi']['pm25']['v'],
-                       'PM 10': data['data']['iaqi']['pm10']['v'], 'O3': data['data']['iaqi']['o3']['v'],
-                       'NO2': data['data']['iaqi']['no2']['v'],
-                       'SO2': data['data']['iaqi']['so2']['v'], 'CO': data['data']['iaqi']['co']['v']}}
-
-    for i in result['data'].keys():
-        sql = "UPDATE Data_air SET '{}' = ? WHERE ID = ?".format(i)
-        c.execute(sql, (result['data'][i], result['ID'],))
-
-    conn.commit()
-    conn.close()
-
-
-wroc_pow()
-wroc_korz()
-
-'''''''''
-import sqlite3
 conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
-
+station_list = [8129,8128]
 token = '1b444a2e8a925655a3b536eace22552dbf44058e'
-response = requests.get('http://api.waqi.info/feed/@8128/?token=' + token)
-data = response.json()
-result = {'ID': data['data']['idx'], 'name': data['data']['city']['name'],
-          'data': {'Date': data['data']['time']['s'], 'PM 2.5': data['data']['iaqi']['pm25']['v'],
-                   'PM 10': data['data']['iaqi']['pm10']['v'], 'O3': data['data']['iaqi']['o3']['v'],
-                   'NO2': data['data']['iaqi']['no2']['v'],
-                   'SO2': data['data']['iaqi']['so2']['v'], 'CO': data['data']['iaqi']['co']['v']}}
+for station in station_list:
+    response = requests.get('http://api.waqi.info/feed/@' + str(station) + '/?token=' + token)
+    data = response.json()
 
-# c.execute("INSERT INTO Cities VALUES (?,?)", (result['ID'],result['name'],))
-for i in result['data'].keys():
-    sql = "UPDATE Data SET '{}' = ? WHERE ID = ?".format(i)
-    c.execute(sql, (result['data'][i], result['ID'],))
+    result = {'ID': data['data']['idx'], 'name': data['data']['city']['name'], 'update': data['data']['time']['s'], 'pomiary': {}}
+    for i in data['data']['iaqi'].keys():
+        if i not in ['h', 't', 'p']:
+            result['pomiary'][i] = data['data']['iaqi'][i]['v']
 
-conn.commit()
+    try:
+        stacja_sql = "INSERT INTO stacja (id, name, updated) VALUES ({}, '{}', '{}');".format(result['ID'], result['name'], datetime.strptime(result['update'], '%Y-%m-%d %H:%M:%S'))
+        c.execute(stacja_sql)
+        conn.commit()
+    except:
+        pass
+
+    for pomiar in result['pomiary'].keys():
+        sql = "INSERT INTO pomiar (czastka, stacja, value) VALUES ('{}',{},{})".format(pomiar, result['ID'],result['pomiary'][pomiar])
+        c.execute(sql)
+        conn.commit()
+
+    conn.commit()
+
 conn.close()
-'''''
