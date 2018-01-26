@@ -1,5 +1,4 @@
 from django import template
-import datetime
 
 register = template.Library()
 
@@ -25,19 +24,19 @@ def no2(value, parametr):
 def pm2(value, parametr):
     if value < 12:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Pył zawieszony 2.5µm"}
-        return dictonary[parametr]
+        return dictonary[str(parametr)]
     elif value < 36:
         dictionary = {"color": "#00ff00", "quality": "Dobra", "disc": "Pył zawieszony 2.5µm"}
-        return dictionary[parametr]
+        return dictionary[str(parametr)]
     elif value < 60:
         dictionary = {"color": "#ffff99", "quality": "Umiarkowana", "disc": "Pył zawieszony 2.5µm"}
-        return dictionary[parametr]
+        return dictionary[str(parametr)]
     elif value < 84:
         dictionary = {"color": "#ffd633", "quality": "Dostateczna", "disc": "Pył zawieszony 2.5µm"}
-        return dictionary[parametr]
+        return dictionary[str(parametr)]
     else:
         dictionary = {"color": "#cc0000", "quality": "Zła", "disc": "Pył zawieszony 2.5µm"}
-        return dictionary[parametr]
+        return dictionary[str(parametr)]
 
 @register.filter
 def pm10(value, parametr):
@@ -115,20 +114,37 @@ def o3(value, parametr):
 def c6h6(value, parametr):
     if value < 5:
         dictonary = {'color': "#00cc00", 'quality': "Bardzo dobra", 'disc': "Benzen"}
-        return dictonary[parametr]
+        return dictonary[str(parametr)]
     elif value < 10:
         dictonary = {'color': "#00ff00", 'quality': "Dobra", 'disc': "Benzen"}
-        return dictonary[parametr]
+        return dictonary[str(parametr)]
     elif value < 15:
         dictonary = {'color': "#ffff99", 'quality': "Umiarkowana", 'disc': "Benzen"}
-        return dictonary[parametr]
+        return dictonary[str(parametr)]
     elif value < 20:
         dictonary = {'color': "#ffd633", 'quality': "Dostateczna", 'disc': "Benzen"}
-        return dictonary[parametr]
+        return dictonary[str(parametr)]
     else:
         dictonary = {'color': "#cc0000", 'quality': "Zła", 'disc': "Benzen"}
-        return dictonary[parametr]
+        return dictonary[str(parametr)]
 
 @register.filter
 def time(time):
     return str(time)
+
+@register.simple_tag(name='my_tag')
+def my_tag(key, value, parametr):
+    if key =='updated':
+        pass
+    if key == 'pm25':
+        return pm2(value, parametr)
+    if key == 'pm10':
+        return pm10(value, parametr)
+    if key == 'no2':
+        return no2(value, parametr)
+    if key == 'co':
+        return co(value, parametr)
+    if key == 'so2':
+        return so2(value, parametr)
+    if key == 'o3':
+        return o3(value, parametr)

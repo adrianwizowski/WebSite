@@ -48,23 +48,8 @@
         </div>
         <div class="card-body">
         {% for key, value in result_korzeniowskiego.items %}
-            {% if key == 'pm25' %}
-                <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
-            {% endif %}
-            {% if key == 'pm10' %}
-                <p class="card-text" style="background-color:{{ value|pm10:'color' }};">{{ value|pm10:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|pm10:'quality' }} </p>
-            {% endif %}
-            {% if key == 'no2' %}
-                <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
-            {% endif %}
-            {% if key == 'co' %}
-                <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
-            {% endif %}
-            {% if key == 'so2' %}
-                <p class="card-text" style="background-color:{{ value|so2:'color' }};">{{ value|so2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|so2:'quality' }} </p>
-            {% endif %}
-            {% if key == 'o3' %}
-                <p class="card-text" style="background-color:{{ value|o3:'color' }};">{{ value|o3:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|o3:'quality' }} </p>
+            {% if key != 'update' and key != 'name' %}
+                <p class="card-text" style="background-color:{% my_tag key value 'color' %};">{% my_tag key value 'disc' %} - {{value}} µg/m<sup>3</sup> {% my_tag key value 'quality' %} </p>
             {% endif %}
         {% endfor %}
         </div>
@@ -84,14 +69,8 @@
                 </div>
         <div class="card-body">
         {% for key, value in result_powstancow.items %}
-            {% if key == 'pm25' %}
-                <p class="card-text" style="background-color:{{ value|pm2:'color' }};">{{ value|pm2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|pm2:'quality' }} </p>
-            {% endif %}
-            {% if key == 'no2' %}
-                <p class="card-text" style="background-color:{{ value|no2:'color' }};">{{ value|no2:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|no2:'quality' }} </p>
-            {% endif %}
-            {% if key == 'co' %}
-                <p class="card-text" style="background-color:{{ value|co:'color' }};">{{ value|co:'disc' }} - {{value}} µg/m<sup>3</sup> {{ value|co:'quality' }} </p>
+            {% if key != 'update' and key != 'name' %}
+                <p class="card-text" style="background-color:{% my_tag key value 'color' %};">{% my_tag key value 'disc' %} - {{value}} µg/m<sup>3</sup> {% my_tag key value 'quality' %} </p>
             {% endif %}
         {% endfor %}
         </div>

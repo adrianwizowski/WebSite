@@ -20,7 +20,7 @@ for station in station_list:
         c.execute(stacja_sql)
         conn.commit()
     except:
-        stacja_sql = "UPDATE stacja SET updated ='{}';".format(datetime.strptime(result['update'],'%Y-%m-%d %H:%M:%S'))
+        stacja_sql = "UPDATE stacja SET updated ='{}' WHERE id = {};".format(datetime.strptime(result['update'],'%Y-%m-%d %H:%M:%S'), result['ID'])
         c.execute(stacja_sql)
         conn.commit()
 
