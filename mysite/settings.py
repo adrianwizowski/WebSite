@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!#4-^2wiyk_)t74%p5)d79i!^n^s%l+#%)432sst-fp4w__!7m'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 PAYPAL_TEST = True
-PAYPAL_RECIEVER_EMAIL = 'adrian.wizowski-facilitator@gmail.com'
+PAYPAL_RECIEVER_EMAIL = ''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
